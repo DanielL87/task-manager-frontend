@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import {API} from "./api"
 import "./App.css";
+import Navbar from "./components/Navbar"
 
 function App() {
   const [token, setToken] = useState("")
@@ -61,6 +63,7 @@ function App() {
 
   return(
     <div>
+      <Navbar user={user} setToken={setToken} setUser={setUser}/>
       <Outlet context={{setToken, token, user}}/>
     </div>
   );
