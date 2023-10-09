@@ -1,70 +1,72 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {API} from "./api"
+import { API } from "./api";
 import "./App.css";
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [token, setToken] = useState("")
-  const [user, setUser] = useState({})
-  const [tasks, setTasks] = useState([])
-  const [categories, setCategories] = useState([])
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState({});
+  const [tasks, setTasks] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   async function fetchUser() {
-    const localToken = localStorage.getItem("token")
+    const localToken = localStorage.getItem("token");
 
     if (localToken) {
-      setToken(localToken)
+      setToken(localToken);
     }
 
-    if(!token) {
+    if (!token) {
       return;
     }
 
     const res = await fetch(`${API}/users/token`, {
-      headers:{
-        Authorization:`Bearer ${token}`
-      }
-    })
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const info = await res.json();
 
     if (info.success) {
-      setUser(info.user)
+      setUser(info.user);
     }
   }
 
-  // fetch tasks 
+  // fetch tasks
 
   async function fetchTasks() {
-    const res = await fetch(`${API}/tasks`)
+    const res = await fetch(`${API}/tasks`);
 
-    const info = await res.json()
+    const info = await res.json();
 
-    if(info.success){
-      setTasks(info.tasks)
+    if (info.success) {
+      setTasks(info.tasks);
     }
   }
 
-  // fetch categories 
+  // fetch categories
 
   async function fetchCategories() {
-    const res = await fetch(`${API}/categories`)
+    const res = await fetch(`${API}/categories`);
 
-    const info = await res.json()
+    const info = await res.json();
 
-    if(info.success) {
-      setCategories(info.categories)
+    if (info.success) {
+      setCategories(info.categories);
     }
   }
 
   useEffect(() => {
-    fetchUser()
-  }, [token])
+    fetchCategories();
+    fetchTasks();
+    fetchUser();
+  }, [token]);
 
-  return(
+  return (
     <div>
-      <Navbar user={user} setToken={setToken} setUser={setUser}/>
-      <Outlet context={{setToken, token, user}}/>
+      <Navbar user={user} setToken={setToken} setUser={setUser} />
+      <Outlet context={{ setToken, token, user, categories, setCategories }} />
     </div>
   );
 }
