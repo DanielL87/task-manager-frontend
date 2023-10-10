@@ -6,6 +6,7 @@ import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import CreateCategory from "./components/createCategory.jsx";
+import CreateTask from "./components/CreateTask.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "createcategory", element: <CreateCategory /> },
+      {path:"createTask", element:<CreateTask/>}
     ],
   },
 ]);
