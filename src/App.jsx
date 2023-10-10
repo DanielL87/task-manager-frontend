@@ -29,7 +29,8 @@ function App() {
     const info = await res.json();
 
     if (info.success) {
-      setUser(info.user);
+
+    setUser(info.user);
     }
   }
 
@@ -66,7 +67,7 @@ function App() {
   return (
     <div>
       <Navbar user={user} setToken={setToken} setUser={setUser} />
-      <Outlet context={{ setToken, token, user, categories, setCategories, tasks, setTasks }} />
+      <Outlet context={{ setToken, token, user, categories, setCategories, tasks, setTasks, fetchTasks, fetchCategories }} />
     </div>
   );
 }
