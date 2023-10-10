@@ -22,12 +22,12 @@ export default function Home() {
               <button>Create Task</button>
             </Link>
           </div>
-        {tasks.map((post) => (
-          <div className="" key={task.id}>
-            <h2>{task.title}</h2>
-            <p>{task.text}</p>
-          </div>
-        ))}
+          {tasks.map((task) => (
+            <div className="" key={task.id}>
+              <h2>{task.title}</h2>
+              <p>{task.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>
