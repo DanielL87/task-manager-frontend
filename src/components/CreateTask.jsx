@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { API } from "../api";
 
 export default function CreateTask() {
-  const {token, fetchTasks, tasks, categories, fetchCategories} = useOutletContext();
+  const {token, fetchTasks, categories, fetchCategories} = useOutletContext();
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +14,11 @@ export default function CreateTask() {
   async function handleSubmit(e){
     setError("");
     e.preventDefault();
-    console.log(title, description, selectCategory)
+
+    if(!selectCategory){
+      setError("Please choose a category");
+      return;
+    }
 
     const res = await fetch(`${API}/tasks`,{
       method:"POST", 
@@ -40,13 +44,12 @@ export default function CreateTask() {
     navigate("/");
   }
 
-
   return !token ? (
     <h2>Please login to create a task.</h2>
   ) : (
     <div>
       <form className="task-form" onSubmit={handleSubmit}>
-        <div>
+        <div className="">
           <label htmlFor="selectCategory"> Select Category</label>
           <select className="" onChange={(e) => setSelectCategory(e.target.value)} value={selectCategory}>
           <option value="">Select a Category</option>
@@ -57,14 +60,14 @@ export default function CreateTask() {
           ))}
           </select>
         </div>
-        <div>
+        <div className="">
           <input className="" type="description" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="enter task" />
         </div>
         <div className="">
          <textarea   className="" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="Description"/>
         </div>
-        <div>
-          <button className="" onChange={(e) => setCategory(e.target.value)} value={(selectCategory)}>Create Task</button>
+        <div className="">
+          <button className="" onChange={(e) => setSelectCategory(e.target.value)} value={(selectCategory)}>Create Task</button>
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>
