@@ -3,7 +3,6 @@ import Category from "./Category";
 
 export default function Home() {
   const { categories, fetchCategories, tasks } = useOutletContext();
-  console.log(categories);
 
   return (
     <>
