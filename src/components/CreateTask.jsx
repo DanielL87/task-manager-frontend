@@ -26,7 +26,7 @@ export default function CreateTask() {
         Authorization:`Bearer ${token}`,
         "Content-Type":"application/json",
       },
-      body:JSON.stringify({
+        body:JSON.stringify({
         title, 
         description,
         categoryId : selectCategory,
@@ -49,9 +49,9 @@ export default function CreateTask() {
   ) : (
     <div>
       <form className="task-form" onSubmit={handleSubmit}>
-        <div className="">
+        <div className="form-group">
           <label htmlFor="selectCategory"> Select Category</label>
-          <select className="" onChange={(e) => setSelectCategory(e.target.value)} value={selectCategory}>
+          <select className="form-control" onChange={(e) => setSelectCategory(e.target.value)} value={selectCategory}>
           <option value="">Select a Category</option>
           {categories.map((_category) => (
             <option key={_category.id} value={_category.id}>
@@ -60,14 +60,14 @@ export default function CreateTask() {
           ))}
           </select>
         </div>
-        <div className="">
-          <input className="" type="description" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="enter task" />
+        <div className="form-group">
+          <input className="form-control" type="description" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="enter task" />
         </div>
-        <div className="">
-         <textarea   className="" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="Description"/>
+        <div className="form-group">
+         <textarea   className="form-control" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="Description"/>
         </div>
-        <div className="">
-          <button className="" onChange={(e) => setSelectCategory(e.target.value)} value={(selectCategory)}>Create Task</button>
+        <div className="form-group">
+          <button className="form-control" onChange={(e) => setSelectCategory(e.target.value)} value={(selectCategory)}>Create Task</button>
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>

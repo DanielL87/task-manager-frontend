@@ -1,8 +1,9 @@
 import { Link, useOutletContext } from "react-router-dom";
 import Category from "./Category";
+import Tasks from "./Tasks";
 
 export default function Home() {
-  const { categories, fetchCategories, tasks } = useOutletContext();
+  const { categories, tasks } = useOutletContext();
 
   return (
     <>
@@ -21,12 +22,14 @@ export default function Home() {
               <button>Create Task</button>
             </Link>
           </div>
-        {tasks.map((task) => (
-          <div className="" key={task.id}>
-            <h2>{task.title}</h2>
-            <p>{task.text}</p>
+          <div className="">
+          {tasks.map((task) => {
+            return <div key={task.id} className="task">
+            <Tasks task ={task} />
+            </div>
+          })
+          }
           </div>
-        ))}
         </div>
       </div>
     </>

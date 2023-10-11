@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "./api";
-import "./App.css";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -40,6 +39,8 @@ function App() {
     const res = await fetch(`${API}/tasks`);
 
     const info = await res.json();
+
+    console.log(info)
 
     if (info.success) {
       setTasks(info.tasks);
