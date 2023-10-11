@@ -3,7 +3,9 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 
 export default function Home() {
+
   const { categories, tasks } = useOutletContext();
+
 
   return (
     <>
@@ -13,7 +15,9 @@ export default function Home() {
             <button>Create Category!</button>
           </Link>
           {categories.map((category) => {
-            return <Category key={category.id} category={category} />;
+            return (
+              <Category key={category.id} category={category} user={user} />
+            );
           })}
         </div>
         <div>
@@ -22,6 +26,7 @@ export default function Home() {
               <button>Create Task</button>
             </Link>
           </div>
+
           <div className="">
           {tasks.map((task) => {
             return <div key={task.id} className="task">
@@ -30,6 +35,7 @@ export default function Home() {
           })
           }
           </div>
+
         </div>
       </div>
     </>
