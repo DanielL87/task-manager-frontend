@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "./api";
-
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -44,6 +43,8 @@ function App() {
     });
 
     const info = await res.json();
+
+    console.log(info)
 
     if (info.success) {
       setTasks(info.tasks);
