@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "./api";
-import "./App.css";
+
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -29,15 +29,19 @@ function App() {
     const info = await res.json();
 
     if (info.success) {
-
-    setUser(info.user);
+      setUser(info.user);
     }
   }
 
   // fetch tasks
 
   async function fetchTasks() {
-    const res = await fetch(`${API}/tasks`);
+    const res = await fetch(`${API}/tasks`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
 
     const info = await res.json();
 
@@ -49,7 +53,12 @@ function App() {
   // fetch categories
 
   async function fetchCategories() {
-    const res = await fetch(`${API}/categories`);
+    const res = await fetch(`${API}/categories`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
 
     const info = await res.json();
 
@@ -67,7 +76,19 @@ function App() {
   return (
     <div>
       <Navbar user={user} setToken={setToken} setUser={setUser} />
-      <Outlet context={{ setToken, token, user, categories, setCategories, tasks, setTasks, fetchTasks, fetchCategories }} />
+      <Outlet
+        context={{
+          setToken,
+          token,
+          user,
+          categories,
+          setCategories,
+          tasks,
+          setTasks,
+          fetchTasks,
+          fetchCategories,
+        }}
+      />
     </div>
   );
 }

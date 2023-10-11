@@ -2,7 +2,9 @@ import { Link, useOutletContext } from "react-router-dom";
 import Category from "./Category";
 
 export default function Home() {
-  const { categories, fetchCategories, tasks } = useOutletContext();
+  const { categories, fetchCategories, tasks, user } = useOutletContext();
+
+  //filters the categories for the logged in user
 
   return (
     <>
@@ -12,7 +14,9 @@ export default function Home() {
             <button>Create Category!</button>
           </Link>
           {categories.map((category) => {
-            return <Category key={category.id} category={category} />;
+            return (
+              <Category key={category.id} category={category} user={user} />
+            );
           })}
         </div>
         <div>
