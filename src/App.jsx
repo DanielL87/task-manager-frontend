@@ -44,8 +44,6 @@ function App() {
 
     const info = await res.json();
 
-    console.log(info)
-
     if (info.success) {
       setTasks(info.tasks);
     }
@@ -76,7 +74,13 @@ function App() {
 
   return (
     <div>
-      <Navbar user={user} setToken={setToken} setUser={setUser} />
+      <Navbar
+        user={user}
+        setToken={setToken}
+        setUser={setUser}
+        setTasks={setTasks}
+        setCategories={setCategories}
+      />
       <Outlet
         context={{
           setToken,

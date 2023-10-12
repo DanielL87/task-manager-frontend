@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 
-export default function Navbar({ user, setToken, setUser }) {
+export default function Navbar({
+  user,
+  setToken,
+  setUser,
+  setTasks,
+  setCategories,
+}) {
   function handleLogout() {
     setToken("");
     setUser({});
+    setTasks([]);
+    setCategories([]);
     localStorage.removeItem("token");
   }
 
