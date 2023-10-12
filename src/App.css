@@ -1,61 +1,60 @@
-.link{
-    text-decoration: none;
-    color:#000000;
-    font-size: 18px;
+.link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 18px;
 }
 
-.navbar-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-weight: 700;
-    margin-top: 20px;
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 700;
+  margin-top: 20px;
 }
 
 /* login and register forms */
 form {
-    text-align: center;
-    margin: 100px auto;
-    width: 300px;
-    padding: 50px;
-    box-shadow: #808080 0 5px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+  text-align: center;
+  margin: 100px auto;
+  width: 300px;
+  padding: 50px;
+  box-shadow: #808080 0 5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
-  
-  /* input fields */
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-  
-  /* button */
-  button {
-    padding: 10px 50px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* error message */
-  p {
-    color: gray ;
-    margin-top: 10px;
-  }
-  
 
-  /* CSS for CreateTask and EditTask components */
+/* input fields */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* button */
+button {
+  padding: 10px 50px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* error message */
+p {
+  color: gray;
+  margin-top: 10px;
+}
+
+/* CSS for CreateTask and EditTask components */
 .task-form {
   margin: 20px;
   padding: 20px;
@@ -64,7 +63,9 @@ input {
   background-color: #f8f8f8;
 }
 
-select, input, textarea {
+select,
+input,
+textarea {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
@@ -83,7 +84,7 @@ select, input, textarea {
 
 /* Style for the Edit button */
 .edit-button {
-  background-color:#007bff;
+  background-color: #007bff;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -93,5 +94,9 @@ select, input, textarea {
 }
 
 .edit-button:hover {
-  background-color:#0056b3;
+  background-color: #0056b3;
+}
+
+#body-container {
+  display: flex;
 }
