@@ -17,21 +17,21 @@ export default function Home() {
           })}
         </div>
         <div>
-          <div>
-            <Link to={"/createTask"}>
-              <button>Create Task</button>
-            </Link>
-          </div>
 
-          <div className="">
+          <div >
             {tasks.map((task) => {
               return (
-                <div key={task.id} className="task">
+                <div className="task" key={task.id} >
                   <Tasks task={task} />
                 </div>
               );
             })}
           </div>
+        </div>
+        <div>
+          <Link to={"/createTask"}>
+            <button>+ New Task</button>
+          </Link>
         </div>
       </div>
     </>
