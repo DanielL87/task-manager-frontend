@@ -8,12 +8,12 @@ export default function Tasks({ task }) {
 
   return (
     <div className="" key={task.id}>
-      <h2>{task.title}</h2>
+      <h4>{task.title}</h4>
       <p>{task.description}</p>
-      <div className="">
+      <div>
         {user.id === task.userId && (
           <Link to={`/editTasks/${task.id}`}>
-            <button>
+            <button className="edit-button">
               <FaPencilAlt />
             </button>
           </Link>
