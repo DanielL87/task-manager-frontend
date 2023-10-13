@@ -3,8 +3,7 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 
 export default function Home() {
-  const { categories, tasks, token, fetchTasks, fetchCategories } =
-    useOutletContext();
+  const { categories, tasks } = useOutletContext();
 
   return (
     <>
@@ -14,15 +13,7 @@ export default function Home() {
             <button>Create Category!</button>
           </Link>
           {categories.map((category) => {
-            return (
-              <Category
-                key={category.id}
-                category={category}
-                token={token}
-                fetchCategories={fetchCategories}
-                fetchTasks={fetchTasks}
-              />
-            );
+            return <Category key={category.id} category={category} />;
           })}
         </div>
         <div>
