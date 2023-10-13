@@ -71,7 +71,7 @@ export default function CreateTask() {
             type="description"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            placeholder="enter task"
+            placeholder="Task"
           />
         </div>
         <div className="form-group">
@@ -88,7 +88,7 @@ export default function CreateTask() {
             onChange={(e) => setSelectCategory(e.target.value)}
             value={selectCategory}
           >
-            Create Task
+            + Add Task
           </button>
         </div>
         {error && <p className="error-message">{error}</p>}

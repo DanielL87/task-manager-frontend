@@ -16,9 +16,6 @@ export default function Home() {
       {user.id ? (
         <div id="body-container">
           <div>
-            <Link to={"/createcategory"}>
-              <button>Create Category!</button>
-            </Link>
             {categories.map((category) => {
               return (
                 <Category
@@ -30,10 +27,14 @@ export default function Home() {
                 />
               );
             })}
+            <div className="add-category">
+            <Link to={"/createcategory"}>
+              <button> + Add Category</button>
+            </Link>
+            </div>
           </div>
           <div>
             <div>
-              {" "}
               <div>
                 {selectedTasks.map((task) => {
                   return (
