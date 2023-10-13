@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { API } from "../api";
+import { FaTrash } from "react-icons/fa";
 export default function Category({
   category,
   token,
@@ -20,9 +22,13 @@ export default function Category({
 
   return (
     <>
-      <div>{category.name}</div>
+      <Link to={`/tasks/${category.name}`}>
+        <div>{category.name}</div>
+      </Link>
       <div>{category.tasks.length}</div>
-      <button onClick={() => handleDelete(category.id)}>Delete Category</button>
+      <button className="edit-button" onClick={() => handleDelete(category.id)}>
+        <FaTrash />
+      </button>
     </>
   );
 }
