@@ -49,7 +49,7 @@ button:hover {
 }
 
 /* error message */
-p {
+.description {
   color: gray;
   margin-top: 10px;
 }
@@ -82,6 +82,15 @@ textarea {
   background-color: #fff;
 }
 
+.task-container{
+  width: 600px;
+  font-weight: 700;
+}
+
+.date{
+  font-weight: 400;
+}
+
 /* Style for the Edit button */
 .icon-buttons {
   background-color: #007bff;
@@ -111,3 +120,4 @@ textarea {
 .add-category{
   margin-top: 50px;
 }
+

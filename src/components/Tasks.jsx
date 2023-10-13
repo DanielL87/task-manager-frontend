@@ -8,9 +8,10 @@ export default function Tasks({ task }) {
   const { user } = useOutletContext();
 
   return (
-    <div className="" key={task.id}>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
+    <div className="task-container" key={task.id}>
+      <p>{task.priority} {task.title}</p>
+      <p className="description">{task.description}</p>
+      <p className="date">{task.dueDate}</p>
       <div>
         {user.id === task.userId && (
           <div className="icon-container">          
