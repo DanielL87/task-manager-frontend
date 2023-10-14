@@ -3,6 +3,7 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 
 export default function Home() {
+
   const { categories, tasks, token, fetchTasks, fetchCategories, user } =
     useOutletContext();
   const { categoryName } = useParams();
