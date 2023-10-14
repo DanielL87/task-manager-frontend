@@ -1,9 +1,9 @@
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import Category from "./Category";
 import Tasks from "./Tasks";
+import LandingPage from "./LandingPage";
 
 export default function Home() {
-
   const { categories, tasks, token, fetchTasks, fetchCategories, user } =
     useOutletContext();
   const { categoryName } = useParams();
@@ -34,18 +34,16 @@ export default function Home() {
             </Link>
             </div>
           </div>
-          <div>
-            <div>
-              <div>
-                {selectedTasks.map((task) => {
-                  return (
-                    <div className="task" key={task.id}>
-                      <Tasks task={task} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+
+          <div id="task-container">
+            {selectedTasks.map((task) => {
+              return (
+                <div className="task" key={task.id}>
+                  <Tasks task={task} fetchTasks={fetchTasks} token={token} />
+                </div>
+              );
+            })}
+
             <div>
               {categoryName && (
                 <Link to={"/createTask"}>
@@ -56,7 +54,7 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <div>Please Login</div>
+        <LandingPage />
       )}
     </>
   );

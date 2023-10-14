@@ -8,8 +8,19 @@ export default function CreateTask() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const [selectCategory, setSelectCategory] = useState("");
+  const [dueDateDate, setDueDateDate] = useState("");
+  const [dueDateTime, setDueDateTime] = useState("");
+  const [priority, setPriority] = useState(null);
 
   const navigate = useNavigate();
+
+  let dueDate = null;
+
+  if (dueDateDate && dueDateTime) {
+    dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
+  } else if (dueDateDate) {
+    dueDate = dueDateDate;
+  }
 
   async function handleSubmit(e) {
     setError("");
@@ -18,6 +29,13 @@ export default function CreateTask() {
     if (!selectCategory) {
       setError("Please choose a category");
       return;
+    }
+
+    if (dueDateDate && !validateDueDate(dueDateDate)) {
+      setError("Due date must be in the future!");
+      return;
+    } else {
+      setError("");
     }
 
     const res = await fetch(`${API}/tasks`, {
@@ -30,6 +48,8 @@ export default function CreateTask() {
         title,
         description,
         categoryId: selectCategory,
+        dueDate,
+        priority,
       }),
     });
     const info = await res.json();
@@ -43,6 +63,13 @@ export default function CreateTask() {
     fetchCategories();
     navigate("/");
   }
+
+  //checks date/time to make sure its in future
+  const validateDueDate = (date) => {
+    const currentDate = new Date();
+    const dueDate = new Date(date);
+    return dueDate > currentDate;
+  };
 
   return !token ? (
     <h2>Please login to create a task.</h2>
@@ -64,7 +91,38 @@ export default function CreateTask() {
             ))}
           </select>
         </div>
-        <input type="date" />
+
+        <div>
+          <label>Due Date</label>
+          <input
+            id="due-Date"
+            type="date"
+            value={dueDateDate}
+            onChange={(e) => setDueDateDate(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Due Time</label>
+          <input
+            id="dueDateTime"
+            type="time"
+            value={dueDateTime}
+            onChange={(e) => setDueDateTime(e.target.value)}
+          />
+        </div>
+
+        <select
+          className="form-group"
+          onChange={(e) => setPriority(e.target.value)}
+          value={priority || ""}
+        >
+          <option value="">Set a Priority</option>
+          <option value="LOW">Low</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="HIGH">High</option>
+        </select>
+
         <div className="form-group">
           <input
             className="form-control"
@@ -72,6 +130,7 @@ export default function CreateTask() {
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder="Task"
+
           />
         </div>
         <div className="form-group">
@@ -84,6 +143,7 @@ export default function CreateTask() {
         </div>
         <div className="form-group">
           <button
+            type="submit"
             className="form-control"
             onChange={(e) => setSelectCategory(e.target.value)}
             value={selectCategory}

@@ -5,6 +5,7 @@
 }
 
 .navbar-container {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -113,8 +114,29 @@ textarea {
 
 #body-container {
   display: flex;
+
   gap: 50px;
   margin-top: 50px;
 }
 
-/* fgksjglkjfsg */
+
+/* //Victors Styles */
+
+#task-container {
+  width: 100%;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.completed-label {
+  display: flex;
+  align-items: center;
+}
+
+.completed-label input {
+  margin-right: 8px; /* Adjust the margin as needed */
+}
+
