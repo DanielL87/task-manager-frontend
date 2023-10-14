@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { FaPencilAlt } from "react-icons/fa";
+
+import DeleteTask from "./DeleteTask";
+
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { API } from "../api";
 
@@ -30,9 +33,12 @@ export default function Tasks({ task, fetchTasks, token }) {
   }
 
   return (
-    <div>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
+
+    <div className="task-container" key={task.id}>
+      <p>{task.priority} {task.title}</p>
+      <p className="description">{task.description}</p>
+      <p className="date">{task.dueDate}</p>
+
       <div>
         <div className="checkbox-container">
           <label className="completed-label">
@@ -45,11 +51,14 @@ export default function Tasks({ task, fetchTasks, token }) {
           </label>
         </div>
         {user.id === task.userId && (
+          <div className="icon-container">          
           <Link to={`/editTasks/${task.id}`}>
-            <button className="edit-button">
+            <button className="icon-buttons">
               <FaPencilAlt />
             </button>
           </Link>
+          <DeleteTask task={task}/>
+          </div>
         )}
       </div>
     </div>

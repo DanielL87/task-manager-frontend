@@ -26,7 +26,7 @@ form {
   align-items: center;
 }
 
-/* input fields */
+/* input */
 input {
   width: 100%;
   padding: 10px;
@@ -50,7 +50,7 @@ button:hover {
 }
 
 /* error message */
-p {
+.description {
   color: gray;
   margin-top: 10px;
 }
@@ -83,8 +83,17 @@ textarea {
   background-color: #fff;
 }
 
+.task-container{
+  width: 600px;
+  font-weight: 700;
+}
+
+.date{
+  font-weight: 400;
+}
+
 /* Style for the Edit button */
-.edit-button {
+.icon-buttons {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -94,14 +103,22 @@ textarea {
   margin-top: 10px;
 }
 
-.edit-button:hover {
+.icon-buttons:hover {
   background-color: #0056b3;
+}
+
+.icon-container{
+  display: flex;
+  gap: 10px;
 }
 
 #body-container {
   display: flex;
-  gap: 20px;
+
+  gap: 50px;
+  margin-top: 50px;
 }
+
 
 /* //Victors Styles */
 
@@ -122,3 +139,4 @@ textarea {
 .completed-label input {
   margin-right: 8px; /* Adjust the margin as needed */
 }
+

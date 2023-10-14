@@ -26,7 +26,7 @@ export default function Category({
         <div>{category.name}</div>
       </Link>
       <div>{category.tasks.length}</div>
-      <button className="edit-button" onClick={() => handleDelete(category.id)}>
+      <button className="icon-buttons" onClick={() => handleDelete(category.id)}>
         <FaTrash />
       </button>
     </>
