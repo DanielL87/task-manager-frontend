@@ -5,7 +5,7 @@ export default function LandingPage() {
   const divStyle = {
     backgroundImage: `url(${landingPage})`,
     height: "100vh",
-    marginTop: "-70px",
+    marginTop: "5px",
     fontSize: "50px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

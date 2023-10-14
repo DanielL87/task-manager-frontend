@@ -61,7 +61,13 @@ export default function CreateTask() {
     setTitle("");
     fetchTasks();
     fetchCategories();
-    navigate("/");
+    const selectedCategory = categories.find(
+      (category) => category.id === selectCategory
+    );
+    if (selectedCategory) {
+      const categoryName = selectedCategory.name;
+      navigate(`/tasks/${categoryName}`);
+    }
   }
 
   //checks date/time to make sure its in future
@@ -130,7 +136,6 @@ export default function CreateTask() {
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             placeholder="Task"
-
           />
         </div>
         <div className="form-group">
