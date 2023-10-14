@@ -32,19 +32,14 @@ export default function Home() {
               );
             })}
           </div>
-          <div>
-            <div>
-              {" "}
-              <div>
-                {selectedTasks.map((task) => {
-                  return (
-                    <div className="task" key={task.id}>
-                      <Tasks task={task} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+          <div id="task-container">
+            {selectedTasks.map((task) => {
+              return (
+                <div className="task" key={task.id}>
+                  <Tasks task={task} fetchTasks={fetchTasks} token={token} />
+                </div>
+              );
+            })}
             <div>
               {categoryName && (
                 <Link to={"/createTask"}>
