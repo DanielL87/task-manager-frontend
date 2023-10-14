@@ -17,12 +17,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "tasks/:categoryName", element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "createcategory", element: <CreateCategory /> },
-      {path:"createTask", element:<CreateTask/>},
-      {path: "editTasks/:taskId", element:<EditTask/>},
-
+      { path: "createTask", element: <CreateTask /> },
+      { path: "editTasks/:taskId", element: <EditTask /> },
     ],
   },
 ]);
