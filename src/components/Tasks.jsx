@@ -32,10 +32,20 @@ export default function Tasks({ task, fetchTasks, token }) {
     await fetchTasks();
   }
 
-  return (
+  const priorityToExclamation = {
+    LOW: "!",
+    MEDIUM: "!!",
+    HIGH: "!!!",
+  };
 
+  // Get the corresponding exclamation points for the task priority
+  const exclamationPoints = priorityToExclamation[task.priority] || "";
+
+  return (
     <div className="task-container" key={task.id}>
-      <p>{task.priority} {task.title}</p>
+      <p>
+        {exclamationPoints} {task.title}
+      </p>
       <p className="description">{task.description}</p>
       <p className="date">{task.dueDate}</p>
 
@@ -51,13 +61,13 @@ export default function Tasks({ task, fetchTasks, token }) {
           </label>
         </div>
         {user.id === task.userId && (
-          <div className="icon-container">          
-          <Link to={`/editTasks/${task.id}`}>
-            <button className="icon-buttons">
-              <FaPencilAlt />
-            </button>
-          </Link>
-          <DeleteTask task={task}/>
+          <div className="icon-container">
+            <Link to={`/editTasks/${task.id}`}>
+              <button className="icon-buttons">
+                <FaPencilAlt />
+              </button>
+            </Link>
+            <DeleteTask task={task} />
           </div>
         )}
       </div>

@@ -83,12 +83,12 @@ textarea {
   background-color: #fff;
 }
 
-.task-container{
+.task-container {
   width: 600px;
   font-weight: 700;
 }
 
-.date{
+.date {
   font-weight: 400;
 }
 
@@ -107,7 +107,7 @@ textarea {
   background-color: #0056b3;
 }
 
-.icon-container{
+.icon-container {
   display: flex;
   gap: 10px;
 }
@@ -118,7 +118,6 @@ textarea {
   gap: 50px;
   margin-top: 50px;
 }
-
 
 /* //Victors Styles */
 
@@ -140,3 +139,6 @@ textarea {
   margin-right: 8px; /* Adjust the margin as needed */
 }
 
+.add-category {
+  margin-top: 20px;
+}
