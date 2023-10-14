@@ -31,7 +31,7 @@ export default function CreateTask() {
       return;
     }
 
-    if (!validateDueDate(dueDateDate)) {
+    if (dueDateDate && !validateDueDate(dueDateDate)) {
       setError("Due date must be in the future!");
       return;
     } else {
@@ -129,7 +129,7 @@ export default function CreateTask() {
             type="description"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            placeholder="enter task"
+            placeholder="enter task title"
           />
         </div>
         <div className="form-group">

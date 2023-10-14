@@ -5,6 +5,7 @@
 }
 
 .navbar-container {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -121,5 +122,3 @@ textarea {
 .completed-label input {
   margin-right: 8px; /* Adjust the margin as needed */
 }
-
-/* fgksjglkjfsg */
