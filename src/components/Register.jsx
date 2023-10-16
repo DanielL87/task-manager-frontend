@@ -7,7 +7,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const {setToken} = useOutletContext();
+  const { setToken } = useOutletContext();
 
   const navigate = useNavigate();
 
@@ -30,8 +30,7 @@ export default function Register() {
     setToken(info.token);
     localStorage.setItem("token", info.token);
 
-    navigate("/");
-    
+    navigate("/tasks/all");
   }
 
   return (

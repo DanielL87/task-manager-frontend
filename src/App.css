@@ -114,7 +114,6 @@ textarea {
 
 #body-container {
   display: flex;
-
   gap: 50px;
   margin-top: 50px;
 }
@@ -141,4 +140,9 @@ textarea {
 
 .add-category {
   margin-top: 20px;
+}
+
+.sorting-segment {
+  display: flex;
+  gap: 10px;
 }

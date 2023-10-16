@@ -17,7 +17,7 @@ export default function Navbar({
 
   return (
     <div className="navbar-container">
-      <Link className="link" to={"/"}>
+      <Link className="link" to={"/tasks/all"}>
         Home
       </Link>
       {!user.id && (

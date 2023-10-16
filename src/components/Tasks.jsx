@@ -43,6 +43,7 @@ export default function Tasks({ task, fetchTasks, token }) {
 
   return (
     <div className="task-container" key={task.id}>
+      <p>{task.category.name}</p>
       <p>
         {exclamationPoints} {task.title}
       </p>
