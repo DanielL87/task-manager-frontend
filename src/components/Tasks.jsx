@@ -43,7 +43,20 @@ export default function Tasks({ task, fetchTasks, token }) {
   let updatedDueDate = "";
   if (task.dueDate) {
     const dueDate = new Date(task.dueDate);
-    updatedDueDate = dueDate.toLocaleDateString();
+    const dateOptions = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    };
+    const timeOptions = {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true, // Display time in 12-hour format with AM/PM
+      timeZoneName: "short", // Specify the time zone name
+    };
+    const formattedDate = dueDate.toLocaleDateString(undefined, dateOptions);
+    const formattedTime = dueDate.toLocaleTimeString("en-US", timeOptions); // Set the time zone to Eastern Standard Time (EST)
+    updatedDueDate = `${formattedDate}, ${formattedTime}`;
   }
 
   return (
