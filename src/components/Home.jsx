@@ -70,7 +70,7 @@ export default function Home() {
             {selectedTasks.map((task) => {
               return (
                 <div className="task" key={task.id}>
-                  <Tasks task={task} fetchTasks={fetchTasks} token={token} />
+                  <Tasks task={task} fetchTasks={fetchTasks} token={token}/>
                 </div>
               );
             })}
