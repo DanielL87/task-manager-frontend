@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+
 import logo from "../assets/logo2.png"
+
+
 
 export default function Navbar({
   user,
@@ -19,7 +22,7 @@ export default function Navbar({
   return (
     <div className="navbar-container">
       <img src={logo} alt="logo" />
-      <Link className="link" to={"/"}>
+      <Link className="link" to={"/tasks/all"}>
         Home
       </Link>
       {!user.id && (

@@ -41,9 +41,10 @@ export default function Tasks({ task, fetchTasks, token }) {
   const updatedDueDate = dueDate.toLocaleDateString();
 
   return (
-    <div  className={"task-container"} key={task.id}>
+    <div className={"task-container"} key={task.id}>
+      <p>{task.category.name}</p>
       <p>
-        {exclamationPoints} 
+        {exclamationPoints}
         <span className={completed ? "completed" : ""}>{task.title}</span>
       </p>
       <p className="description">{task.description}</p>

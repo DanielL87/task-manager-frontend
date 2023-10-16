@@ -1,11 +1,11 @@
 body {
-  background-color: #13062E;
+  background-color: #13062e;
 }
 
 .link {
   text-decoration: none;
   font-size: 18px;
-  color: #ffffff;
+  color: white;
 }
 
 .navbar-container {
@@ -132,7 +132,7 @@ textarea {
 }
 
 .completed-label input {
-  margin-right: 8px; 
+  margin-right: 8px;
 }
 
 .add-category {
@@ -140,6 +140,21 @@ textarea {
 }
 
 .completed {
-  text-decoration:line-through;
+  text-decoration: line-through;
   color: red;
+}
+
+#sidebar-container {
+  background-color: white;
+  padding: 15px;
+}
+
+#sidebar-container .link {
+  color: black;
+}
+
+.sorting-segment {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 }
