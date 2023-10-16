@@ -37,8 +37,14 @@ export default function Tasks({ task, fetchTasks, token }) {
   // Get the corresponding exclamation points for the task priority
   const exclamationPoints = priorityToExclamation[task.priority] || "";
 
-  const dueDate = new Date(task.dueDate);
-  const updatedDueDate = dueDate.toLocaleDateString();
+  // const dueDate = new Date(task.dueDate);
+  // const updatedDueDate = dueDate.toLocaleDateString();
+
+  let updatedDueDate = "";
+  if (task.dueDate) {
+    const dueDate = new Date(task.dueDate);
+    updatedDueDate = dueDate.toLocaleDateString();
+  }
 
   return (
     <div className={"task-container"} key={task.id}>
@@ -48,7 +54,8 @@ export default function Tasks({ task, fetchTasks, token }) {
         <span className={completed ? "completed" : ""}>{task.title}</span>
       </p>
       <p className="description">{task.description}</p>
-      <p className="date">{updatedDueDate}</p>
+
+      {task.dueDate && <p className="date">{updatedDueDate}</p>}
 
       <div>
         <div className="checkbox-container">

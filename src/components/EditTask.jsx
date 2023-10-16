@@ -14,7 +14,7 @@ export default function EditTask() {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
   const [error, setError] = useState("");
-  const [selectCategory, setSelectCategory] = useState("");
+  const [selectCategory, setSelectCategory] = useState(task.category.id);
   const [dueDateDate, setDueDateDate] = useState("");
   const [dueDateTime, setDueDateTime] = useState("");
   const [priority, setPriority] = useState(null);
@@ -24,7 +24,7 @@ export default function EditTask() {
   if (dueDateDate && dueDateTime) {
     dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
   } else if (dueDateDate) {
-    dueDate = dueDateDate;
+    dueDate = `${dueDateDate} EST`;
   }
 
   if (!task) {

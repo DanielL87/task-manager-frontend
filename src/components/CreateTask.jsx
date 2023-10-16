@@ -19,7 +19,7 @@ export default function CreateTask() {
   if (dueDateDate && dueDateTime) {
     dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
   } else if (dueDateDate) {
-    dueDate = dueDateDate;
+    dueDate = `${dueDateDate} EST`;
   }
 
   async function handleSubmit(e) {
