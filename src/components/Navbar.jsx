@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo2.svg"
 
 export default function Navbar({
   user,
@@ -17,6 +18,7 @@ export default function Navbar({
 
   return (
     <div className="navbar-container">
+      <img src={logo} alt="logo" />
       <Link className="link" to={"/"}>
         Home
       </Link>
