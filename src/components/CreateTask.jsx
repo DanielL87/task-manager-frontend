@@ -31,7 +31,7 @@ export default function CreateTask() {
       return;
     }
 
-    if (!validateDueDate(dueDateDate)) {
+    if (dueDateDate && !validateDueDate(dueDateDate)) {
       setError("Due date must be in the future!");
       return;
     } else {
@@ -61,14 +61,21 @@ export default function CreateTask() {
     setTitle("");
     fetchTasks();
     fetchCategories();
-    navigate("/");
+
+    const selectedCategory = categories.find(
+      (category) => category.id === selectCategory
+    );
+    if (selectedCategory) {
+      const categoryName = selectedCategory.name;
+      navigate(`/tasks/${categoryName}`);
+    }
   }
 
-  //checks date/time to make sure its in future
+  // checks date/time to make sure its in future
   const validateDueDate = (date) => {
     const currentDate = new Date();
     const dueDate = new Date(date);
-    return dueDate > currentDate;
+    return dueDate >= currentDate;
   };
 
   return !token ? (
@@ -129,7 +136,7 @@ export default function CreateTask() {
             type="description"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
-            placeholder="enter task"
+            placeholder="Task"
           />
         </div>
         <div className="form-group">
@@ -147,7 +154,7 @@ export default function CreateTask() {
             onChange={(e) => setSelectCategory(e.target.value)}
             value={selectCategory}
           >
-            Create Task
+            + Add Task
           </button>
         </div>
         {error && <p className="error-message">{error}</p>}

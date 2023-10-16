@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaPencilAlt } from "react-icons/fa";
+import DeleteTask from "./DeleteTask";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { API } from "../api";
 
@@ -11,8 +12,6 @@ export default function Tasks({ task, fetchTasks, token }) {
   async function handleCheckboxChange(e) {
     e.preventDefault();
     setCompleted(!completed);
-
-    //Api Put request to update completed
 
     const res = await fetch(`${API}/tasks/${task.id}`, {
       method: "PUT",
@@ -29,10 +28,28 @@ export default function Tasks({ task, fetchTasks, token }) {
     await fetchTasks();
   }
 
+  const priorityToExclamation = {
+    LOW: "!",
+    MEDIUM: "!!",
+    HIGH: "!!!",
+  };
+
+  // Get the corresponding exclamation points for the task priority
+  const exclamationPoints = priorityToExclamation[task.priority] || "";
+
+  const dueDate = new Date(task.dueDate);
+  const updatedDueDate = dueDate.toLocaleDateString();
+
   return (
-    <div>
-      <h4>{task.title}</h4>
-      <p>{task.description}</p>
+    <div className={"task-container"} key={task.id}>
+      <p>{task.category.name}</p>
+      <p>
+        {exclamationPoints}
+        <span className={completed ? "completed" : ""}>{task.title}</span>
+      </p>
+      <p className="description">{task.description}</p>
+      <p className="date">{updatedDueDate}</p>
+
       <div>
         <div className="checkbox-container">
           <label className="completed-label">
@@ -45,11 +62,14 @@ export default function Tasks({ task, fetchTasks, token }) {
           </label>
         </div>
         {user.id === task.userId && (
-          <Link to={`/editTasks/${task.id}`}>
-            <button className="edit-button">
-              <FaPencilAlt />
-            </button>
-          </Link>
+          <div className="icon-container">
+            <Link to={`/editTasks/${task.id}`}>
+              <button className="icon-buttons">
+                <FaPencilAlt />
+              </button>
+            </Link>
+            <DeleteTask task={task} />
+          </div>
         )}
       </div>
     </div>

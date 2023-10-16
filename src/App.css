@@ -1,7 +1,11 @@
+body {
+  background-color: #13062e;
+}
+
 .link {
   text-decoration: none;
-  color: #000000;
   font-size: 18px;
+  color: white;
 }
 
 .navbar-container {
@@ -12,7 +16,6 @@
   margin-top: 20px;
 }
 
-/* login and register forms */
 form {
   text-align: center;
   margin: 100px auto;
@@ -23,18 +26,18 @@ form {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  background-color: #ffffff;
 }
 
-/* input fields */
 input {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
 }
 
-/* button */
 button {
   padding: 10px 50px;
   background-color: #007bff;
@@ -48,13 +51,11 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* error message */
-p {
+.description {
   color: gray;
   margin-top: 10px;
 }
 
-/* CSS for CreateTask and EditTask components */
 .task-form {
   margin: 20px;
   padding: 20px;
@@ -71,9 +72,9 @@ textarea {
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
 }
 
-/* Style for the task div */
 .task {
   margin: 10px;
   padding: 10px;
@@ -82,8 +83,16 @@ textarea {
   background-color: #fff;
 }
 
-/* Style for the Edit button */
-.edit-button {
+.task-container {
+  width: 600px;
+  font-weight: 700;
+}
+
+.date {
+  font-weight: 400;
+}
+
+.icon-buttons {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -93,16 +102,20 @@ textarea {
   margin-top: 10px;
 }
 
-.edit-button:hover {
+.icon-buttons:hover {
   background-color: #0056b3;
+}
+
+.icon-container {
+  display: flex;
+  gap: 10px;
 }
 
 #body-container {
   display: flex;
-  gap: 20px;
+  gap: 50px;
+  margin-top: 50px;
 }
-
-/* //Victors Styles */
 
 #task-container {
   width: 100%;
@@ -119,7 +132,29 @@ textarea {
 }
 
 .completed-label input {
-  margin-right: 8px; /* Adjust the margin as needed */
+  margin-right: 8px;
 }
 
-/* fgksjglkjfsg */
+.add-category {
+  margin-top: 20px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: red;
+}
+
+#sidebar-container {
+  background-color: white;
+  padding: 15px;
+}
+
+#sidebar-container .link {
+  color: black;
+}
+
+.sorting-segment {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}

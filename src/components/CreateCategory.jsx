@@ -11,6 +11,7 @@ export default function CreateCategory() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setError("");
 
     const res = await fetch(`${API}/categories`, {
       method: "POST",
@@ -22,9 +23,13 @@ export default function CreateCategory() {
         name,
       }),
     });
+
     const info = await res.json();
-    console.log(info);
-    navigate("/");
+    if (!info.success) {
+      return setError(info.error);
+    }
+
+    navigate("/tasks/all");
     fetchCategories();
   }
 
@@ -40,6 +45,7 @@ export default function CreateCategory() {
             value={name}
           />
           <button>Submit</button>
+          {error && <p className="error-message">{error}</p>}
         </form>
       </div>
     </>

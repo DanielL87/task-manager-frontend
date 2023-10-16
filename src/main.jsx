@@ -9,7 +9,6 @@ import Register from "./components/Register.jsx";
 import CreateCategory from "./components/CreateCategory.jsx";
 import CreateTask from "./components/CreateTask.jsx";
 import EditTask from "./components/EditTask.jsx";
-import "./App.css";
 
 const router = createBrowserRouter([
   {
