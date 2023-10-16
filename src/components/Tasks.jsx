@@ -9,6 +9,7 @@ export default function Tasks({ task, fetchTasks, token }) {
   const { user } = useOutletContext();
   const [completed, setCompleted] = useState(task.completed);
   const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
     const dueDateTime = new Date(task.dueDate);
@@ -19,35 +20,29 @@ export default function Tasks({ task, fetchTasks, token }) {
     const hoursUntilDue = Math.floor(
       (timeUntilDue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    // const minutesUntilDue = Math.floor(
-    //   (timeUntilDue % (1000 * 60 * 60)) / (1000 * 60)
-    // );
+    const minutesUntilDue = Math.floor(
+      (timeUntilDue % (1000 * 60 * 60)) / (1000 * 60)
+    );
 
-    const dueDateThresholdDays = 1;
-    const dueTimeThresholdHours = 5;
-
-    if (
-      (daysUntilDue <= dueDateThresholdDays && daysUntilDue >= 0) ||
-      (daysUntilDue === 0 && hoursUntilDue <= dueTimeThresholdHours)
-    ) {
+    if (daysUntilDue <= 1) {
       setShowAlert(true);
+      setAlertMessage(
+        `Task due in ${daysUntilDue} day${daysUntilDue > 1 ? "s" : ""}`
+      );
+    } else if (hoursUntilDue <= 5) {
+      setShowAlert(true);
+      setAlertMessage(
+        `Task due in ${hoursUntilDue} hour${hoursUntilDue > 1 ? "s" : ""}`
+      );
+    } else if (minutesUntilDue < 0) {
+      setShowAlert(true);
+      setAlertMessage(
+        `Task due in ${minutesUntilDue} minute${minutesUntilDue > 1 ? "s" : ""}`
+      );
     } else {
       setShowAlert(false);
     }
   }, [task.dueDate]);
-  //   // Check if the task is due within the next X days (adjust as needed)
-  //   const dueDateThreshold = 1; // Example: Notify 1 day before due date
-  //   const today = new Date();
-  //   const dueDate = new Date(task.dueDate);
-
-  //   const daysUntilDue = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
-
-  //   if (daysUntilDue <= dueDateThreshold && daysUntilDue >= 0) {
-  //     setShowAlert(true);
-  //   } else {
-  //     setShowAlert(false);
-  //   }
-  // }, [task.dueDate]);
 
   async function handleCheckboxChange(e) {
     e.preventDefault();
@@ -82,7 +77,7 @@ export default function Tasks({ task, fetchTasks, token }) {
 
   return (
     <div className={`task-container ${showAlert ? "alert" : ""}`} key={task.id}>
-      {showAlert && <div className="alert-message">Task due soon!</div>}
+      {showAlert && <div className="alert-message">{alertMessage}</div>}
       <p>{task.category.name}</p>
       <p>
         {exclamationPoints}
