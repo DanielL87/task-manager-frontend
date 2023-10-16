@@ -158,3 +158,11 @@ textarea {
   gap: 5px;
   margin-bottom: 10px;
 }
+.alert-message {
+  color: red;
+  font-size: 16px; /* Adjust the font size as needed */
+}
+.alert-message::before {
+  content: "\1F631"; /* Unicode character for shocked face emoji */
+  margin-right: 8px; /* Adjust spacing between emoji and text */
+}
