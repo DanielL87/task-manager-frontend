@@ -22,7 +22,7 @@ export default function Category({
 
   return (
     <>
-      <Link to={`/tasks/${category.name}`}>
+      <Link className="link" to={`/tasks/${category.name}`}>
         <div>{category.name}</div>
       </Link>
       <div>{category.tasks.length}</div>

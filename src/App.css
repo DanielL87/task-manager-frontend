@@ -1,11 +1,14 @@
+body {
+  background-color: #13062E;
+}
+
 .link {
   text-decoration: none;
-  color: #000000;
   font-size: 18px;
+  color: #ffffff;
 }
 
 .navbar-container {
-  color: white;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -13,7 +16,6 @@
   margin-top: 20px;
 }
 
-/* login and register forms */
 form {
   text-align: center;
   margin: 100px auto;
@@ -24,18 +26,18 @@ form {
   flex-direction: column;
   gap: 10px;
   align-items: center;
+  background-color: #ffffff;
 }
 
-/* input */
 input {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
 }
 
-/* button */
 button {
   padding: 10px 50px;
   background-color: #007bff;
@@ -49,13 +51,11 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* error message */
 .description {
   color: gray;
   margin-top: 10px;
 }
 
-/* CSS for CreateTask and EditTask components */
 .task-form {
   margin: 20px;
   padding: 20px;
@@ -72,9 +72,9 @@ textarea {
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: white;
 }
 
-/* Style for the task div */
 .task {
   margin: 10px;
   padding: 10px;
@@ -92,7 +92,6 @@ textarea {
   font-weight: 400;
 }
 
-/* Style for the Edit button */
 .icon-buttons {
   background-color: #007bff;
   color: #fff;
@@ -114,12 +113,9 @@ textarea {
 
 #body-container {
   display: flex;
-
   gap: 50px;
   margin-top: 50px;
 }
-
-/* //Victors Styles */
 
 #task-container {
   width: 100%;
@@ -136,9 +132,14 @@ textarea {
 }
 
 .completed-label input {
-  margin-right: 8px; /* Adjust the margin as needed */
+  margin-right: 8px; 
 }
 
 .add-category {
   margin-top: 20px;
+}
+
+.completed {
+  text-decoration:line-through;
+  color: red;
 }
