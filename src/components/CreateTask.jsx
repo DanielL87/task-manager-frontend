@@ -62,20 +62,20 @@ export default function CreateTask() {
     fetchTasks();
     fetchCategories();
 
-
-    const selectedCategory = categories.find((category) => category.id === selectCategory);
+    const selectedCategory = categories.find(
+      (category) => category.id === selectCategory
+    );
     if (selectedCategory) {
       const categoryName = selectedCategory.name;
       navigate(`/tasks/${categoryName}`);
-    } 
-
+    }
   }
 
-  //checks date/time to make sure its in future
+  // checks date/time to make sure its in future
   const validateDueDate = (date) => {
     const currentDate = new Date();
     const dueDate = new Date(date);
-    return dueDate > currentDate;
+    return dueDate >= currentDate;
   };
 
   return !token ? (

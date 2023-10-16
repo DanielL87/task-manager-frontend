@@ -5,7 +5,7 @@ body {
 .link {
   text-decoration: none;
   font-size: 18px;
-  color: #ffffff;
+  color: white;
 }
 
 .navbar-container {
@@ -142,4 +142,19 @@ textarea {
 .completed {
   text-decoration: line-through;
   color: red;
+}
+
+#sidebar-container {
+  background-color: white;
+  padding: 15px;
+}
+
+#sidebar-container .link {
+  color: black;
+}
+
+.sorting-segment {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 }

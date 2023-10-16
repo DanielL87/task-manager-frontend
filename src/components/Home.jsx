@@ -10,9 +10,22 @@ export default function Home() {
   const { categoryName } = useParams();
 
   const [filterByCompleted, setFilterByCompleted] = useState(false);
-  const [filterByPriority, setFilterByPriority] = useState("");
+  const [filterByPriority, setFilterByPriority] = useState(false);
+  const [priority, setPriority] = useState("");
 
   const [selectedTasks, setSelectedTasks] = useState([]);
+
+  function handleSortPriority(priority) {
+    if (priority === "clear") {
+      // Clear the selected priority
+      setPriority("");
+      setFilterByPriority(false);
+    } else {
+      // Set the selected priority
+      setPriority(priority);
+      setFilterByPriority(true);
+    }
+  }
 
   useEffect(() => {
     let selectedTasks = tasks.filter(
@@ -21,14 +34,19 @@ export default function Home() {
     if (filterByCompleted) {
       selectedTasks = selectedTasks.filter((task) => task.completed);
     }
+    if (filterByPriority) {
+      selectedTasks = selectedTasks.filter(
+        (task) => task.priority === priority
+      );
+    }
     setSelectedTasks(selectedTasks);
-  }, [filterByCompleted, tasks, categoryName]);
+  }, [filterByCompleted, filterByPriority, tasks, categoryName, priority]);
 
   return (
     <>
       {user.id ? (
         <div id="body-container">
-          <div>
+          <div id="sidebar-container">
             <div id="sorting-container">
               <div className="sorting-segment">
                 <label className="completed-label">
@@ -39,11 +57,14 @@ export default function Home() {
                   />
                   Sort by Completed Tasks
                 </label>
-                <select name="" id="">
-                  <option value="">Sort by Priority</option>
-                  <option value="">Low</option>
-                  <option value="">Medium</option>
-                  <option value="">High</option>
+                <select
+                  className="form-control"
+                  onChange={(e) => handleSortPriority(e.target.value)}
+                >
+                  <option value="clear">Sort by Priority/Clear</option>
+                  <option value="LOW">Low</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="HIGH">High</option>
                 </select>
               </div>
             </div>
@@ -70,7 +91,7 @@ export default function Home() {
             {selectedTasks.map((task) => {
               return (
                 <div className="task" key={task.id}>
-                  <Tasks task={task} fetchTasks={fetchTasks} token={token}/>
+                  <Tasks task={task} fetchTasks={fetchTasks} token={token} />
                 </div>
               );
             })}
