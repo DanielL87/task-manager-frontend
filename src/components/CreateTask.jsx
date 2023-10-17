@@ -9,18 +9,18 @@ export default function CreateTask() {
   const [error, setError] = useState("");
   const [selectCategory, setSelectCategory] = useState("");
   const [dueDateDate, setDueDateDate] = useState("");
-  const [dueDateTime, setDueDateTime] = useState("");
+  // const [dueDateTime, setDueDateTime] = useState("");
   const [priority, setPriority] = useState(null);
 
   const navigate = useNavigate();
 
-  let dueDate = null;
+  let dueDate = `${dueDateDate} EST`;
 
-  if (dueDateDate && dueDateTime) {
-    dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
-  } else if (dueDateDate) {
-    dueDate = `${dueDateDate} EST`;
-  }
+  // if (dueDateDate && dueDateTime) {
+  //   dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
+  // } else if (dueDateDate) {
+  //   dueDate = `${dueDateDate} EST`;
+  // }
 
   // if (dueDateDate) {
   //   if (dueDateTime) {
@@ -121,7 +121,7 @@ export default function CreateTask() {
           />
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Due Time</label>
           <input
             id="dueDateTime"
@@ -129,7 +129,7 @@ export default function CreateTask() {
             value={dueDateTime}
             onChange={(e) => setDueDateTime(e.target.value)}
           />
-        </div>
+        </div> */}
 
         <select
           className="form-group"

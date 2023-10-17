@@ -3,6 +3,7 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 import LandingPage from "./LandingPage";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 export default function Home() {
   const { categories, tasks, token, fetchTasks, fetchCategories, user } =
@@ -55,7 +56,7 @@ export default function Home() {
                     checked={filterByCompleted}
                     onChange={() => setFilterByCompleted(!filterByCompleted)}
                   />
-                  Sort by Completed Tasks
+                  Sort by Completed
                 </label>
                 <select
                   className="form-control"
@@ -108,6 +109,7 @@ export default function Home() {
       ) : (
         <LandingPage />
       )}
+      <Footer />
     </>
   );
 }

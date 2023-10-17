@@ -217,53 +217,23 @@ export default function Tasks({ task, fetchTasks, token }) {
       }),
     });
     const info = await res.json();
-
+    console.log(info);
     await fetchTasks();
   }
 
   const priorityToExclamation = {
-    LOW: "!",
-    MEDIUM: "!!",
-    HIGH: "!!!",
+    LOW: "❗",
+    MEDIUM: "❗❗",
+    HIGH: "❗❗❗",
   };
 
   // Get the corresponding exclamation points for the task priority
   const exclamationPoints = priorityToExclamation[task.priority] || "";
 
-  const formatDateTime = (dateTime) => {
-    if (!dateTime) return "";
 
-    const dueDate = new Date(dateTime);
-    const dateOptions = {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    };
+  const dueDate = new Date(task.dueDate);
+  const updatedDueDate = dueDate.toLocaleDateString();
 
-    let formattedTime = "";
-    const hours = dueDate.getUTCHours();
-    const minutes = dueDate.getUTCMinutes();
-
-    // Check if the time is not midnight (00:00)
-    if (hours !== 0 || minutes !== 0) {
-      const timeOptions = {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false, // Display time in 24-hour format
-        timeZone: "UTC", // Assuming the input is in UTC
-      };
-      formattedTime = `, ${dueDate.toLocaleTimeString("en-US", timeOptions)}`;
-    }
-
-    const formattedDate = dueDate.toLocaleDateString(undefined, dateOptions);
-
-    return `${formattedDate}${formattedTime}`;
-  };
-
-  // Inside your component
-  // ...
-
-  let updatedDueDate = formatDateTime(task.dueDate);
 
   return (
     <div
@@ -273,7 +243,7 @@ export default function Tasks({ task, fetchTasks, token }) {
       {alertVisible && <div className="alert-message">{alertMessage}</div>}
       <p>{task.category.name}</p>
       <p>
-        {exclamationPoints}
+        <span id="exclamation">{exclamationPoints}</span>
         <span className={completed ? "completed" : ""}>{task.title}</span>
       </p>
       <p className="description">{task.description}</p>
