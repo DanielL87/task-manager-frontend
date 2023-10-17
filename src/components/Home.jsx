@@ -56,7 +56,7 @@ export default function Home() {
                     checked={filterByCompleted}
                     onChange={() => setFilterByCompleted(!filterByCompleted)}
                   />
-                  Sort by Completed Tasks
+                  Sort by Completed
                 </label>
                 <select
                   className="form-control"
@@ -108,8 +108,8 @@ export default function Home() {
         </div>
       ) : (
         <LandingPage />
-        )}
-        <Footer/>
+      )}
+      <Footer />
     </>
   );
 }

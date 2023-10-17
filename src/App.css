@@ -155,42 +155,44 @@ textarea {
 
 .sorting-segment {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-weight: bolder;
 }
-
 
 /* Footer */
 
-.footer{
+.footer {
   color: #ffffff;
   padding: 20px;
   text-align: center;
 }
 
-footer a{
+footer a {
   color: #ffffff;
   text-decoration: none;
   margin: 0 20px;
 }
 
-footer a:hover{
-  text-decoration:underline; 
+footer a:hover {
+  text-decoration: underline;
 }
 
-.footer-container{
+.footer-container {
   font-size: 18px;
   font-weight: 700;
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   gap: 20px;
   margin-top: 100px;
 }
-
 
 .alert-message {
   color: red;
   font-size: 16px; /* Adjust the font size as needed */
 }
 
+#exclamation {
+  font-size: 14px;
+}
