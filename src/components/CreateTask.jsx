@@ -38,6 +38,8 @@ export default function CreateTask() {
       setError("");
     }
 
+    console.log(dueDate);
+
     const res = await fetch(`${API}/tasks`, {
       method: "POST",
       headers: {
