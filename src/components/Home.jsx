@@ -42,8 +42,6 @@ export default function Home() {
     setSelectedTasks(selectedTasks);
   }, [filterByCompleted, filterByPriority, tasks, categoryName, priority]);
 
-  console.log(tasks);
-
   return (
     <>
       {user.id ? (

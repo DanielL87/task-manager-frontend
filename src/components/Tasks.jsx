@@ -75,24 +75,40 @@ export default function Tasks({ task, fetchTasks, token }) {
   // const dueDate = new Date(task.dueDate);
   // const updatedDueDate = dueDate.toLocaleDateString();
 
-  let updatedDueDate = "";
-  if (task.dueDate) {
-    const dueDate = new Date(task.dueDate);
+  const formatDateTime = (dateTime) => {
+    if (!dateTime) return "";
+
+    const dueDate = new Date(dateTime);
     const dateOptions = {
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
     };
-    const timeOptions = {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true, // Display time in 12-hour format with AM/PM
-      timeZoneName: "short", // Specify the time zone name
-    };
+
+    let formattedTime = "";
+    const hours = dueDate.getUTCHours();
+    const minutes = dueDate.getUTCMinutes();
+
+    // Check if the time is not midnight (00:00)
+    if (hours !== 0 || minutes !== 0) {
+      const timeOptions = {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false, // Display time in 24-hour format
+        timeZone: "UTC", // Assuming the input is in UTC
+      };
+      formattedTime = `, ${dueDate.toLocaleTimeString("en-US", timeOptions)}`;
+    }
+
     const formattedDate = dueDate.toLocaleDateString(undefined, dateOptions);
-    const formattedTime = dueDate.toLocaleTimeString("en-US", timeOptions); // Set the time zone to Eastern Standard Time (EST)
-    updatedDueDate = `${formattedDate}, ${formattedTime}`;
-  }
+
+    return `${formattedDate}${formattedTime}`;
+  };
+
+  // Inside your component
+  // ...
+
+  let updatedDueDate = formatDateTime(task.dueDate);
 
   return (
     <div className={`task-container ${showAlert ? "alert" : ""}`} key={task.id}>

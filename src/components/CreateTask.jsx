@@ -22,6 +22,16 @@ export default function CreateTask() {
     dueDate = `${dueDateDate} EST`;
   }
 
+  // if (dueDateDate) {
+  //   if (dueDateTime) {
+  //     // If due time is provided, include it in the due date string
+  //     dueDate = `${dueDateDate}T${dueDateTime}:00.000Z`;
+  //   } else {
+  //     // If only the date is provided, set the time to midnight
+  //     dueDate = `${dueDateDate}T00:00:00.000Z`;
+  //   }
+  // }
+
   async function handleSubmit(e) {
     setError("");
     e.preventDefault();
@@ -37,6 +47,8 @@ export default function CreateTask() {
     } else {
       setError("");
     }
+
+    console.log(dueDate);
 
     const res = await fetch(`${API}/tasks`, {
       method: "POST",
