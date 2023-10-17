@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { API } from "../api";
 
 export default function DeleteTasks({ task }) {
-  const { token, fetchTasks, fetchCategories, user } = useOutletContext();
+  const { token, fetchTasks, user } = useOutletContext();
 
   async function handleDeleteTask() {
     const res = await fetch(`${API}/tasks/${task.id}`, {
