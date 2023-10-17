@@ -16,16 +16,9 @@ export default function EditTask() {
   const [error, setError] = useState("");
   const [selectCategory, setSelectCategory] = useState(task.category.id);
   const [dueDateDate, setDueDateDate] = useState("");
-  const [dueDateTime, setDueDateTime] = useState("");
   const [priority, setPriority] = useState(null);
 
-  let dueDate = null;
-
-  if (dueDateDate && dueDateTime) {
-    dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
-  } else if (dueDateDate) {
-    dueDate = `${dueDateDate} EST`;
-  }
+  let dueDate = `${dueDateDate} EST`;
 
   if (!task) {
     return <></>;
@@ -87,7 +80,7 @@ export default function EditTask() {
           />
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>Due Time</label>
           <input
             id="dueDateTime"
@@ -95,7 +88,7 @@ export default function EditTask() {
             value={dueDateTime}
             onChange={(e) => setDueDateTime(e.target.value)}
           />
-        </div>
+        </div> */}
 
         <select
           className="form-group"

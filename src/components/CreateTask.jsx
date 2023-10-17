@@ -8,29 +8,10 @@ export default function CreateTask() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const [selectCategory, setSelectCategory] = useState("");
-  const [dueDateDate, setDueDateDate] = useState("");
-  // const [dueDateTime, setDueDateTime] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState(null);
 
   const navigate = useNavigate();
-
-  let dueDate = `${dueDateDate} EST`;
-
-  // if (dueDateDate && dueDateTime) {
-  //   dueDate = `${dueDateDate}T${dueDateTime}:00Z`;
-  // } else if (dueDateDate) {
-  //   dueDate = `${dueDateDate} EST`;
-  // }
-
-  // if (dueDateDate) {
-  //   if (dueDateTime) {
-  //     // If due time is provided, include it in the due date string
-  //     dueDate = `${dueDateDate}T${dueDateTime}:00.000Z`;
-  //   } else {
-  //     // If only the date is provided, set the time to midnight
-  //     dueDate = `${dueDateDate}T00:00:00.000Z`;
-  //   }
-  // }
 
   async function handleSubmit(e) {
     setError("");
@@ -41,14 +22,12 @@ export default function CreateTask() {
       return;
     }
 
-    if (dueDateDate && !validateDueDate(dueDateDate)) {
-      setError("Due date must be in the future!");
-      return;
+    let prismaDate = dueDate;
+    if (dueDate === "") {
+      prismaDate = null;
     } else {
-      setError("");
+      prismaDate += " EST";
     }
-
-    console.log(dueDate);
 
     const res = await fetch(`${API}/tasks`, {
       method: "POST",
@@ -60,7 +39,7 @@ export default function CreateTask() {
         title,
         description,
         categoryId: selectCategory,
-        dueDate,
+        dueDate: prismaDate,
         priority,
       }),
     });
@@ -82,13 +61,6 @@ export default function CreateTask() {
       navigate(`/tasks/${categoryName}`);
     }
   }
-
-  // checks date/time to make sure its in future
-  const validateDueDate = (date) => {
-    const currentDate = new Date();
-    const dueDate = new Date(date);
-    return dueDate >= currentDate;
-  };
 
   return !token ? (
     <h2>Please login to create a task.</h2>
@@ -116,20 +88,10 @@ export default function CreateTask() {
           <input
             id="due-Date"
             type="date"
-            value={dueDateDate}
-            onChange={(e) => setDueDateDate(e.target.value)}
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
-
-        {/* <div className="form-group">
-          <label>Due Time</label>
-          <input
-            id="dueDateTime"
-            type="time"
-            value={dueDateTime}
-            onChange={(e) => setDueDateTime(e.target.value)}
-          />
-        </div> */}
 
         <select
           className="form-group"

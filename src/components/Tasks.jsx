@@ -8,41 +8,50 @@ export default function Tasks({ task, fetchTasks, token }) {
   const navigate = useNavigate();
   const { user } = useOutletContext();
   const [completed, setCompleted] = useState(task.completed);
-  const [showAlert, setShowAlert] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
   useEffect(() => {
-    const dueDateTime = new Date(task.dueDate);
-    const currentTime = new Date();
+    const updateAlertMessage = () => {
+      const dueDateTime = new Date(task.dueDate);
+      const currentTime = new Date();
 
-    const timeUntilDue = dueDateTime - currentTime;
-    const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
-    const hoursUntilDue = Math.floor(
-      (timeUntilDue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutesUntilDue = Math.floor(
-      (timeUntilDue % (1000 * 60 * 60)) / (1000 * 60)
-    );
+      const timeUntilDue = dueDateTime - currentTime;
+      const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
+      const hoursUntilDue = Math.floor(
+        (timeUntilDue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutesUntilDue = Math.floor(
+        (timeUntilDue % (1000 * 60 * 60)) / (1000 * 60)
+      );
 
-    if (daysUntilDue <= 1) {
-      setShowAlert(true);
-      setAlertMessage(
-        `Task due in ${daysUntilDue} day${daysUntilDue > 1 ? "s" : ""}`
-      );
-    } else if (hoursUntilDue <= 5) {
-      setShowAlert(true);
-      setAlertMessage(
-        `Task due in ${hoursUntilDue} hour${hoursUntilDue > 1 ? "s" : ""}`
-      );
-    } else if (minutesUntilDue < 0) {
-      setShowAlert(true);
-      setAlertMessage(
-        `Task due in ${minutesUntilDue} minute${minutesUntilDue > 1 ? "s" : ""}`
-      );
-    } else {
-      setShowAlert(false);
-    }
-  }, [task.dueDate]);
+      if (completed) {
+        setAlertMessage("Task completed");
+        setAlertVisible(true);
+      } else if (daysUntilDue <= 0) {
+        setAlertMessage("Task overdue");
+        setAlertVisible(true);
+      } else if (daysUntilDue === 1) {
+        setAlertMessage(`Task due in ${daysUntilDue} day`);
+        setAlertVisible(true);
+      } else if (hoursUntilDue <= 5) {
+        setAlertMessage(
+          `Task due in ${hoursUntilDue} hour${hoursUntilDue > 1 ? "s" : ""}`
+        );
+        setAlertVisible(true);
+      } else {
+        setAlertVisible(false);
+      }
+    };
+
+    // Initial update
+    updateAlertMessage();
+
+    // Set up interval to update every hour
+    const intervalId = setInterval(updateAlertMessage, 60 * 60 * 1000);
+
+    return () => clearInterval(intervalId); // Cleanup on component unmount
+  }, [task.dueDate, completed]);
 
   async function handleCheckboxChange(e) {
     e.preventDefault();
@@ -76,8 +85,11 @@ export default function Tasks({ task, fetchTasks, token }) {
   const updatedDueDate = dueDate.toLocaleDateString();
 
   return (
-    <div className={`task-container ${showAlert ? "alert" : ""}`} key={task.id}>
-      {showAlert && <div className="alert-message">{alertMessage}</div>}
+    <div
+      className={`task-container ${alertVisible ? "alert" : ""}`}
+      key={task.id}
+    >
+      {alertVisible && <div className="alert-message">{alertMessage}</div>}
       <p>{task.category.name}</p>
       <p>
         <span id="exclamation">{exclamationPoints}</span>
