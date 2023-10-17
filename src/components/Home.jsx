@@ -3,6 +3,7 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 import LandingPage from "./LandingPage";
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 export default function Home() {
   const { categories, tasks, token, fetchTasks, fetchCategories, user } =
@@ -109,7 +110,8 @@ export default function Home() {
         </div>
       ) : (
         <LandingPage />
-      )}
+        )}
+        <Footer/>
     </>
   );
 }
