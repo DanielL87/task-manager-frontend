@@ -13,36 +13,22 @@ export default function Tasks({ task, fetchTasks, token }) {
 
   useEffect(() => {
     const updateAlertMessage = () => {
-      const dueDateTime = new Date(task.dueDate);
-      const currentTime = new Date();
-
-      const timeUntilDue = dueDateTime - currentTime;
-      const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
-      const hoursUntilDue = Math.floor(
-        (timeUntilDue % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutesUntilDue = Math.floor(
-        (timeUntilDue % (1000 * 60 * 60)) / (1000 * 60)
-      );
-
-      if (completed) {
-        setAlertMessage("Task completed");
-        setAlertVisible(true);
-      } else if (daysUntilDue <= 0) {
-        setAlertMessage("Task overdue");
-        setAlertVisible(true);
-      } else if (daysUntilDue === 1) {
-        setAlertMessage(`Task due in ${daysUntilDue} day`);
-        setAlertVisible(true);
-      } else if (hoursUntilDue <= 5) {
-        setAlertMessage(
-          `Task due in ${hoursUntilDue} hour${hoursUntilDue > 1 ? "s" : ""}`
-        );
-        setAlertVisible(true);
-      } else {
-        setAlertVisible(false);
+      if (task.dueDate){
+        const dueDate = new Date(task.dueDate);
+        const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+    
+        if (completed) {
+          setAlertMessage("Task completed");
+          setAlertVisible(true);
+        } else if (dueDate < currentDate) {
+          setAlertMessage("Task overdue");
+          setAlertVisible(true);
+        } else {
+          setAlertVisible(false);
+        } 
       }
-    };
+    }
 
     // Initial update
     updateAlertMessage();
