@@ -21,17 +21,20 @@ export default function Tasks({ task, fetchTasks, token }) {
 
       console.log(daysUntilDue);
 
-      if (completed) {
-        setAlertMessage("Task completed");
-        setAlertVisible(true);
-      } else if (daysUntilDue < 0) {
-        setAlertMessage("Task overdue");
-        setAlertVisible(true);
-      } else if (daysUntilDue === 1) {
-        setAlertMessage(`Task due in ${daysUntilDue} day`);
-        setAlertVisible(true);
-      } else {
-        setAlertVisible(false);
+      if (task.dueDate) {
+        const dueDate = new Date(task.dueDate);
+        const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+
+        if (completed) {
+          setAlertMessage("Task completed");
+          setAlertVisible(true);
+        } else if (dueDate < currentDate) {
+          setAlertMessage("Task overdue");
+          setAlertVisible(true);
+        } else {
+          setAlertVisible(false);
+        }
       }
     };
 
@@ -115,3 +118,7 @@ export default function Tasks({ task, fetchTasks, token }) {
     </div>
   );
 }
+
+// else if (daysUntilDue === 1) {
+//   setAlertMessage(`Task due in ${daysUntilDue} day`);
+//   setAlertVisible(true);}
