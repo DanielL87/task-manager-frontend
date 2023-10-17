@@ -17,9 +17,7 @@ export default function Tasks({ task, fetchTasks, token }) {
       const currentDate = new Date();
 
       const timeUntilDue = dueDate - currentDate;
-      const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
-
-      console.log(daysUntilDue);
+      // const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
 
       if (task.dueDate) {
         const dueDate = new Date(task.dueDate);
@@ -31,6 +29,13 @@ export default function Tasks({ task, fetchTasks, token }) {
           setAlertVisible(true);
         } else if (dueDate < currentDate) {
           setAlertMessage("Task overdue");
+          setAlertVisible(true);
+        } else if (timeUntilDue <= 0) {
+          // Check if the task is due on the same day
+          setAlertMessage("Task due today!");
+          setAlertVisible(true);
+        } else if (timeUntilDue <= 24 * 60 * 60 * 1000) {
+          setAlertMessage(`Task due Tomorrow!`);
           setAlertVisible(true);
         } else {
           setAlertVisible(false);
@@ -118,7 +123,3 @@ export default function Tasks({ task, fetchTasks, token }) {
     </div>
   );
 }
-
-// else if (daysUntilDue === 1) {
-//   setAlertMessage(`Task due in ${daysUntilDue} day`);
-//   setAlertVisible(true);}
