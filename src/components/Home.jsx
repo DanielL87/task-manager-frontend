@@ -62,7 +62,7 @@ export default function Home() {
                   className="form-control"
                   onChange={(e) => handleSortPriority(e.target.value)}
                 >
-                  <option value="clear">Sort by Priority/Clear</option>
+                  <option value="clear">By Priority</option>
                   <option value="LOW">Low</option>
                   <option value="MEDIUM">Medium</option>
                   <option value="HIGH">High</option>
