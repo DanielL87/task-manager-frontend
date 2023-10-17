@@ -6,14 +6,11 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 export default function Home() {
-  const { categories, tasks, token, fetchTasks, fetchCategories, user } =
-    useOutletContext();
+  const { categories, tasks, token, fetchTasks, fetchCategories, user } = useOutletContext();
   const { categoryName } = useParams();
-
   const [filterByCompleted, setFilterByCompleted] = useState(false);
   const [filterByPriority, setFilterByPriority] = useState(false);
   const [priority, setPriority] = useState("");
-
   const [selectedTasks, setSelectedTasks] = useState([]);
 
   function handleSortPriority(priority) {
@@ -62,7 +59,7 @@ export default function Home() {
                   className="form-control"
                   onChange={(e) => handleSortPriority(e.target.value)}
                 >
-                  <option value="clear">Sort by Priority/Clear</option>
+                  <option value="clear">Sort by Priority</option>
                   <option value="LOW">Low</option>
                   <option value="MEDIUM">Medium</option>
                   <option value="HIGH">High</option>
