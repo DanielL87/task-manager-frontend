@@ -15,10 +15,8 @@ export default function EditTask() {
   const [description, setDescription] = useState(task.description);
   const [error, setError] = useState("");
   const [selectCategory, setSelectCategory] = useState(task.category.id);
-  const [dueDateDate, setDueDateDate] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [priority, setPriority] = useState(null);
-
-  let dueDate = `${dueDateDate} EST`;
 
   if (!task) {
     return <></>;
@@ -27,6 +25,14 @@ export default function EditTask() {
   async function handleEditTask(e) {
     setError("");
     e.preventDefault();
+
+    let prismaDate = dueDate;
+    if (dueDate === "") {
+      prismaDate = null;
+    } else {
+      prismaDate += " EST";
+    }
+
     const res = await fetch(`${API}/tasks/${taskId}`, {
       method: "PUT",
       headers: {
@@ -37,7 +43,7 @@ export default function EditTask() {
         title,
         description,
         categoryId: selectCategory,
-        dueDate,
+        dueDate: prismaDate,
         priority,
       }),
     });
@@ -75,20 +81,10 @@ export default function EditTask() {
           <input
             id="due-Date"
             type="date"
-            value={dueDateDate}
-            onChange={(e) => setDueDateDate(e.target.value)}
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
-
-        {/* <div className="form-group">
-          <label>Due Time</label>
-          <input
-            id="dueDateTime"
-            type="time"
-            value={dueDateTime}
-            onChange={(e) => setDueDateTime(e.target.value)}
-          />
-        </div> */}
 
         <select
           className="form-group"
