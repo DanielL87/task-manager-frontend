@@ -45,6 +45,13 @@ export default function CreateCategory() {
             value={name}
           />
           <button>Submit</button>
+          <button
+            type="button"
+            className="form-control"
+            onClick={() => navigate("/tasks/all")} // Change "/home" to your home page route
+          >
+            Cancel
+          </button>
           {error && <p className="error-message">{error}</p>}
         </form>
       </div>
