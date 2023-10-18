@@ -4,7 +4,7 @@ import landingPage from "../assets/landingPg.png";
 export default function LandingPage() {
   const divStyle = {
     backgroundImage: `url(${landingPage})`,
-    height: "calc(100vh-100px)",
+    height: "100vh",
     width:"100vw",
     marginTop: "5px",
     backgroundSize: "contain",
