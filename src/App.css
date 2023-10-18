@@ -5,7 +5,7 @@ body {
 .link {
   text-decoration: none;
   font-size: 18px;
-  color: white;
+  color: #ffffff;
 }
 
 .navbar-container {
@@ -81,6 +81,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
+  width: 500px;
 }
 
 .task-container {
@@ -170,7 +171,7 @@ textarea {
   color: #ffffff;
   padding: 20px;
   text-align: center;
-  position: fixed;
+  position:relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -192,11 +193,11 @@ footer a:hover {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
 }
 
 .alert-message {
-  color: red;
+  color: #ff0000;
   font-size: 16px;
 }
 
