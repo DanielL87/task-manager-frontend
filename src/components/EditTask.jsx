@@ -116,9 +116,16 @@ export default function EditTask() {
             placeholder="Description"
           />
         </div>
-        <div className="form-group">
+        <div className="form-buttons">
           <button className="form-control" type="submit">
             Update Task
+          </button>
+          <button
+            type="button"
+            className="form-control"
+            onClick={() => navigate("/tasks/all")} // Change "/home" to your home page route
+          >
+            Cancel
           </button>
         </div>
         {error && <p className="">{error}</p>}

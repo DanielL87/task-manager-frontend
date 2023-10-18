@@ -186,7 +186,7 @@ textarea {
   bottom: 0;
   left: 0;
   width: 100%;
-  margin-bottom: -35px;
+  margin-bottom: -30px;
 }
 
 footer a {
@@ -250,4 +250,17 @@ footer a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.form-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
