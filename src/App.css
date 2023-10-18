@@ -151,8 +151,9 @@ textarea {
 #sidebar-container {
   background-color: #ffffff;
   padding: 20px;
-  width: 40%;
+  width: 50vw;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 #sidebar-container .link {
