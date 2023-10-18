@@ -5,12 +5,14 @@ export default function LandingPage() {
   const divStyle = {
     backgroundImage: `url(${landingPage})`,
     height: "100vh",
+
     width:"100vw",
+
     marginTop: "5px",
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
-    backgroundPosition:"center",
-    backgroundAttachment:"relative",
+    backgroundPosition: "center",
+    backgroundAttachment: "relative",
   };
 
   return <div style={divStyle}></div>;

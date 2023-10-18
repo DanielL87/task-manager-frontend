@@ -65,7 +65,7 @@ export default function CreateTask() {
   return !token ? (
     <h2>Please login to create a task.</h2>
   ) : (
-    <div>
+    <div className="form-container">
       <form className="task-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="selectField"> Select Category</label>
@@ -123,7 +123,7 @@ export default function CreateTask() {
             placeholder="Description"
           />
         </div>
-        <div className="form-group">
+        <div className="form-buttons">
           <button
             type="submit"
             className="form-control"
@@ -131,6 +131,13 @@ export default function CreateTask() {
             value={selectCategory}
           >
             + Add Task
+          </button>
+          <button
+            type="button"
+            className="form-control"
+            onClick={() => navigate("/tasks/all")} // Change "/home" to your home page route
+          >
+            Cancel
           </button>
         </div>
         {error && <p className="error-message">{error}</p>}
