@@ -128,9 +128,9 @@ textarea {
   background-color: #ff0000;
 }
 
-/* #task-container {
+#task-container {
   width: 100%;
-} */
+}
 
 .checkbox-container {
   display: flex;
@@ -221,8 +221,9 @@ footer a:hover {
 #exclamation {
   font-size: 14px;
 }
+
 .wider-select {
-  width: 200px; /* Adjust the width as needed */
+  width: 200px; 
 }
 
 .category-container {
