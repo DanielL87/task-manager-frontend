@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 export default function CreateCategory() {
-  const { token, fetchTasks, fetchCategories } = useOutletContext();
+  const { token, fetchCategories } = useOutletContext();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
 
@@ -37,7 +37,7 @@ export default function CreateCategory() {
     <>
       <div>
         <form action="" onSubmit={handleSubmit}>
-          <h3>Create a New Category</h3>
+          <h3>Create Category</h3>
           <input
             type="text"
             placeholder="Category Name..."

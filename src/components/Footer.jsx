@@ -9,9 +9,9 @@ export default  function Footer() {
           <a href="#">Pricing</a>
           <a href="#">Contact</a>
         </div>
-        <div>
+        <p>
         Copyright © 2023 Scheduly Inc.
-        </div>
+        </p>
       </div>
     </footer>
   );

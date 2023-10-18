@@ -15,9 +15,7 @@ export default function Tasks({ task, fetchTasks, token }) {
     const updateAlertMessage = () => {
       const dueDate = new Date(task.dueDate);
       const currentDate = new Date();
-
       const timeUntilDue = dueDate - currentDate;
-      // const daysUntilDue = Math.floor(timeUntilDue / (1000 * 60 * 60 * 24));
 
       if (task.dueDate) {
         const dueDate = new Date(task.dueDate);
@@ -31,11 +29,10 @@ export default function Tasks({ task, fetchTasks, token }) {
           setAlertMessage("Task overdue");
           setAlertVisible(true);
         } else if (timeUntilDue <= 0) {
-          // Check if the task is due on the same day
-          setAlertMessage("Task due today!");
+          setAlertMessage("Task due today");
           setAlertVisible(true);
         } else if (timeUntilDue <= 24 * 60 * 60 * 1000) {
-          setAlertMessage(`Task due Tomorrow!`);
+          setAlertMessage("Task due tomorrow");
           setAlertVisible(true);
         } else {
           setAlertVisible(false);
@@ -49,7 +46,7 @@ export default function Tasks({ task, fetchTasks, token }) {
     // Set up interval to update every hour
     const intervalId = setInterval(updateAlertMessage, 60 * 60 * 1000);
 
-    return () => clearInterval(intervalId); // Cleanup on component unmount
+    return () => clearInterval(intervalId);
   }, [task.dueDate, completed]);
 
   async function handleCheckboxChange(e) {
@@ -89,7 +86,7 @@ export default function Tasks({ task, fetchTasks, token }) {
       key={task.id}
     >
       {alertVisible && <div className="alert-message">{alertMessage}</div>}
-      <p>{task.category.name}</p>
+      <p className="category-name">{task.category.name}</p>
       <p>
         <span id="exclamation">{exclamationPoints}</span>
         <span className={completed ? "completed" : ""}>{task.title}</span>

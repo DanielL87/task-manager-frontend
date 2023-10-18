@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-
 import logo from "../assets/logo2.png"
-
-
 
 export default function Navbar({
   user,
