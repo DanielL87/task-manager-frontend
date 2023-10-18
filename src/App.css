@@ -185,14 +185,13 @@ textarea {
 
 .footer {
   color: #ffffff;
-  /* padding: 20px; */
   text-align: center;
-  position: absolute;
-  /* bottom: 0; */
-  /* left: 0; */
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  margin-top: 50px;
-  margin-bottom: -50px;
+  margin-bottom: -35px;
 }
 
 footer a {
@@ -209,7 +208,6 @@ footer a:hover {
 .footer-container {
   font-size: 18px;
   font-weight: 700;
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -253,8 +251,8 @@ footer a:hover {
   display: flex;
 }
 
-.task-footer {
+ .task-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} 
