@@ -52,8 +52,8 @@ export default function Login() {
           placeholder="Password.."
         />
         <button>Login</button>
+        <p className="error">{error}</p>
       </form>
-      <p>{error}</p>
     </div>
   );
 }

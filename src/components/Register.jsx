@@ -49,8 +49,8 @@ export default function Register() {
           placeholder="Password.."
         />
         <button type="submit">Register</button>
+        <p className="error">{error}</p>
       </form>
-      <p>{error}</p>
     </div>
   );
 }
