@@ -81,10 +81,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  width: 500px;
-}
-
-.task-container {
+  font-size: 20px;
   width: 600px;
 }
 
@@ -125,6 +122,7 @@ textarea {
 .checkbox-container {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 }
 
 .completed-label {
@@ -227,4 +225,20 @@ footer a:hover {
 
 #new-task {
   margin-left: 10px;
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title {
+  display: flex;
+}
+
+.task-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

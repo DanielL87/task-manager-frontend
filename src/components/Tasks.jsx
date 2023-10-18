@@ -87,25 +87,17 @@ export default function Tasks({ task, fetchTasks, token }) {
     >
       {alertVisible && <div className="alert-message">{alertMessage}</div>}
       <p className="category-name">{task.category.name}</p>
-      <p>
-        <span id="exclamation">{exclamationPoints}</span>
-        <span className={completed ? "completed" : ""}>{task.title}</span>
-      </p>
+      <div className="task-header">
+        <div className="task-title">
+          <div id="exclamation">{exclamationPoints}</div>
+          <div className={completed ? "completed" : ""}>{task.title}</div>
+        </div>
+
+        {task.dueDate && <p className="date">{updatedDueDate}</p>}
+      </div>
       <p className="description">{task.description}</p>
 
-      {task.dueDate && <p className="date">{updatedDueDate}</p>}
-
-      <div>
-        <div className="checkbox-container">
-          <label className="completed-label">
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={handleCheckboxChange}
-            />
-            Completed
-          </label>
-        </div>
+      <div className="task-footer">
         {user.id === task.userId && (
           <div className="icon-container">
             <Link to={`/editTasks/${task.id}`}>
@@ -116,6 +108,17 @@ export default function Tasks({ task, fetchTasks, token }) {
             <DeleteTask task={task} />
           </div>
         )}
+
+        <div className="checkbox-container">
+          <label className="completed-label">
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={handleCheckboxChange}
+            />
+            Completed
+          </label>
+        </div>
       </div>
     </div>
   );
