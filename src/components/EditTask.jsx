@@ -58,7 +58,7 @@ export default function EditTask() {
   }
 
   return (
-    <div>
+    <div className="form-container">
       <form className="task-form" onSubmit={handleEditTask}>
         <div className="form-group">
           <label htmlFor="selectCategory"> Select Category</label>

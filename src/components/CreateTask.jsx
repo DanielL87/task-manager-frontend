@@ -65,7 +65,7 @@ export default function CreateTask() {
   return !token ? (
     <h2>Please login to create a task.</h2>
   ) : (
-    <div>
+    <div className="form-container">
       <form className="task-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="selectField"> Select Category</label>
