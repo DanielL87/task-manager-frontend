@@ -66,13 +66,13 @@ button:hover {
 
 select,
 input,
-textarea {
+textarea{
   width: 100%;
   padding: 10px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .task {
@@ -100,6 +100,7 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .icon-buttons:hover {
@@ -114,7 +115,7 @@ textarea {
 #body-container {
   display: flex;
   gap: 50px;
-  margin: 50px 0px 150px;
+  margin: 50px 300px 150px;
 }
 
 #task-container {
@@ -140,29 +141,34 @@ textarea {
 }
 
 .category-name{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .completed {
   text-decoration: line-through;
-  color: red;
+  color: #ff0000;
 }
 
 #sidebar-container {
-  background-color: white;
-  padding: 15px;
+  background-color: #ffffff;
+  padding: 35px;
 }
 
 #sidebar-container .link {
-  color: black;
+  color: #000000;
+}
+
+.sidebar-category{
+  font-weight: 700;
 }
 
 .sorting-segment {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   margin-bottom: 15px;
   font-weight: bolder;
+  width: 200px;
 }
 
 /* Footer */
@@ -181,6 +187,7 @@ footer a {
   color: #ffffff;
   text-decoration: none;
   margin: 0 20px;
+  font-size: 18px;
 }
 
 footer a:hover {
