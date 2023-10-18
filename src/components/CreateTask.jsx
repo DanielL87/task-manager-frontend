@@ -68,11 +68,13 @@ export default function CreateTask() {
     <div>
       <form className="task-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="selectCategory"> Select Category</label>
+          <label htmlFor="selectField"> Select Category</label>
           <select
             className="form-control"
             onChange={(e) => setSelectCategory(e.target.value)}
             value={selectCategory}
+            id="selectField"
+            name="options"
           >
             <option value="">Select a Category</option>
             {categories.map((_category) => (

@@ -66,6 +66,8 @@ export default function EditTask() {
             className="form-control"
             onChange={(e) => setSelectCategory(e.target.value)}
             value={selectCategory}
+            id="selectCategory"
+            name="options"
           >
             <option value="">Select a Category</option>
             {categories.map((_category) => (
@@ -77,7 +79,7 @@ export default function EditTask() {
         </div>
 
         <div>
-          <label>Due Date</label>
+          <label htmlFor="due-Date">Due Date</label>
           <input
             id="due-Date"
             type="date"
