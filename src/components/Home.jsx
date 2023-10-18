@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 export default function Home() {
-  const { categories, tasks, token, fetchTasks, fetchCategories, user } = useOutletContext();
+  const { categories, tasks, token, fetchTasks, fetchCategories, user } =
+    useOutletContext();
   const { categoryName } = useParams();
   const [filterByCompleted, setFilterByCompleted] = useState(false);
   const [filterByPriority, setFilterByPriority] = useState(false);
@@ -56,10 +57,10 @@ export default function Home() {
                   Sort by Completed
                 </label>
                 <select
-                  className="form-control"
+                  className="form-control wider-select"
                   onChange={(e) => handleSortPriority(e.target.value)}
                 >
-                  <option  value="clear">By Priority</option>
+                  <option value="clear">By Priority</option>
                   <option value="LOW">Low</option>
                   <option value="MEDIUM">Medium</option>
                   <option value="HIGH">High</option>
@@ -94,7 +95,7 @@ export default function Home() {
               );
             })}
 
-            <div>
+            <div id="new-task">
               {categoryName && (
                 <Link to={"/createTask"}>
                   <button>+ New Task</button>

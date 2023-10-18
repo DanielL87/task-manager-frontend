@@ -21,14 +21,20 @@ export default function Category({
   }
 
   return (
-    <>
-      <Link className="link" to={`/tasks/${category.name}`}>
-        <div className="sidebar-category">{category.name}</div>
-      </Link>
-      <div>{category.tasks.length}</div>
-      <button className="icon-buttons" onClick={() => handleDelete(category.id)}>
+    <div className="category-container">
+      <div className="category-header">
+        <Link className="link" to={`/tasks/${category.name}`}>
+          <div>{category.name}</div>
+        </Link>
+        <div>{category.tasks.length}</div>
+      </div>
+
+      <button
+        className="icon-buttons"
+        onClick={() => handleDelete(category.id)}
+      >
         <FaTrash />
       </button>
-    </>
+    </div>
   );
 }
