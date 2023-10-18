@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "./api";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [token, setToken] = useState("");
@@ -94,6 +95,7 @@ function App() {
           fetchCategories,
         }}
       />
+      <Footer />
     </div>
   );
 }

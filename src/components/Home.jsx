@@ -3,7 +3,6 @@ import Category from "./Category";
 import Tasks from "./Tasks";
 import LandingPage from "./LandingPage";
 import { useEffect, useState } from "react";
-import Footer from "./Footer";
 
 export default function Home() {
   const { categories, tasks, token, fetchTasks, fetchCategories, user } =
@@ -42,7 +41,7 @@ export default function Home() {
   }, [filterByCompleted, filterByPriority, tasks, categoryName, priority]);
 
   return (
-    <>
+    <div id="main-container">
       {user.id ? (
         <div id="body-container">
           <div id="sidebar-container">
@@ -107,7 +106,6 @@ export default function Home() {
       ) : (
         <LandingPage />
       )}
-      <Footer />
-    </>
+    </div>
   );
 }
