@@ -7,7 +7,7 @@ export default function LandingPage() {
     height: "100vh",
     width:"100vw",
     marginTop: "5px",
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition:"center",
     backgroundAttachment:"relative",
